@@ -5,5 +5,10 @@ document.addEventListener("DOMContentLoaded", function(){
         const square= document.createElement("div");
         square.classList.add("square");
         gridContainer.appendChild(square); 
+
+    square.addEventListener("mouseover", function(){
+        square.classList.add("hovered")
+    });
     }
 })
+
