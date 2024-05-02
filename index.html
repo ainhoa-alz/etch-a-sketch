@@ -7,14 +7,29 @@
     </head>
 
     <body>
-        
-            <div class="grid-container">
-            </div>    
-            <div class="slider">
-                <input type="range" id="gridSizeSlider" min="16" max="60" value="16">
-                <label for="gridSizeSlider" class="grid-size"></label>
+        <div class="game-container">
+            
+            <div class="controls">
+                <div class="color-picker">
+                    <label for="colorPicker">COLOR</label>
+                    <input type="color" id="colorPicker" value="#00000">
+                </div>
             </div>
 
+            <div class="sub-container">
+                <div class="grid-container"></div>  
+                <div class="slider">
+                    <input type="range" id="gridSizeSlider" min="16" max="60" value="16">
+                    <label for="gridSizeSlider" class="grid-size"></label>
+                </div>
+            </div>
+
+            
+        
+
+           
+
+         </div> 
 
     <script src="main.js"></script>
     </body>
