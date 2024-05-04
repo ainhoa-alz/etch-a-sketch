@@ -36,11 +36,30 @@ body {
 .color-picker, .background-picker{
     gap:5px;
 }
-.eraser, .clear, .background-picker{
+.clear, .background-picker, .random-color{
     margin-top:20px;    
 }
 
-.eraser.active{
+.eraser{
+    margin-top:60px;
+}
+
+.eraser, .random-color, .clear  {
+    width:100px;
+    padding: 5px;
+}
+
+#backgroundPicker, #colorPicker{
+    width:105px;
+    border:none;
+    padding: 0px 5px;
+    background-color: transparent;
+
+}
+
+
+    
+.eraser.active, .random-color.active{
     background-color: red;
 }
 

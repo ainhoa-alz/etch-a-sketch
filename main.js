@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", function(){
     const gridSize = document.querySelector(".grid-size");
     const colorPicker = document.querySelector("#colorPicker");
     const backgroundPicker = document.querySelector("#backgroundPicker");
+    const randomColor = document.querySelector(".random-color"); 
     const eraser = document.querySelector(".eraser"); 
     const clear = document.querySelector(".clear");
     
@@ -11,6 +12,7 @@ document.addEventListener("DOMContentLoaded", function(){
     let currentColor = colorPicker.value || "#000000";
     let backgroundColor = backgroundPicker.value || "#FFFFFF"; 
     let eraserMode = false; 
+    let randomMode = false; 
     
     function createGrid(size){
         gridContainer.innerHTML = "";
@@ -26,12 +28,16 @@ document.addEventListener("DOMContentLoaded", function(){
            
 
             square.addEventListener("mouseover", function(){
-                if (!eraserMode && (!square.style.backgroundColor || square.style.backgroundColor === currentColor)) { 
+                if (randomMode) {
+                    const randomRed = Math.floor(Math.random() * 256);
+                    const randomGreen = Math.floor(Math.random() * 256);
+                    const randomBlue = Math.floor(Math.random() * 256);
+                    square.style.backgroundColor = `rgb(${randomRed},${randomGreen},${randomBlue})`;
+                } else if (!eraserMode && (!square.style.backgroundColor || square.style.backgroundColor === currentColor)) { 
                     square.style.backgroundColor = currentColor;
-                }   else if (eraserMode && (!square.style.backgroundColor || square.style.backgroundColor !== currentColor)) {
+                } else if (eraserMode && (!square.style.backgroundColor || square.style.backgroundColor !== currentColor)) {
                     square.style.backgroundColor = ""; 
                 }
-
             });
         }
         gridSize.textContent = `${size}x${size}`;
@@ -55,8 +61,10 @@ document.addEventListener("DOMContentLoaded", function(){
     }); 
 
     eraser.addEventListener("click", function(){
+        randomMode = false;
         eraserMode = !eraserMode;
         eraser.classList.toggle("active");
+        randomColor.classList.remove("active");
     });
 
     clear.addEventListener("click", function(){
@@ -66,6 +74,12 @@ document.addEventListener("DOMContentLoaded", function(){
         }
     });
 
-    
+    randomColor.addEventListener("click", function(){
+        randomMode = !randomMode;
+        randomColor.classList.toggle("active"); 
+        eraserMode = false; 
+        eraser.classList.remove("active");
+
+    }); 
 
 });
