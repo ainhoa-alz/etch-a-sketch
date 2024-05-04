@@ -3,8 +3,12 @@ document.addEventListener("DOMContentLoaded", function(){
     const gridSizeSlider = document.querySelector("#gridSizeSlider");
     const gridSize = document.querySelector(".grid-size");
     const colorPicker = document.querySelector("#colorPicker");
+    const backgroundPicker = document.querySelector("#backgroundPicker");
     const eraser = document.querySelector(".eraser"); 
+    
+
     let currentColor = colorPicker.value || "#000000";
+    let backgroundColor = backgroundPicker.value || "#FFFFFF"; 
     let eraserMode = false; 
     
     function createGrid(size){
@@ -18,6 +22,7 @@ document.addEventListener("DOMContentLoaded", function(){
             square.style.width = `${squareSize}px`;
             square.style.height = `${squareSize}px`;
             gridContainer.appendChild(square); 
+           
 
             square.addEventListener("mouseover", function(){
                 if (!eraserMode && (!square.style.backgroundColor || square.style.backgroundColor === currentColor)) { 
@@ -36,9 +41,17 @@ document.addEventListener("DOMContentLoaded", function(){
         createGrid(this.value);
 
     });
+
+    
+
     colorPicker.addEventListener('change', function() { 
         currentColor = colorPicker.value || "#000000"; 
     });
+
+    backgroundPicker.addEventListener("input", function(){
+        backgroundColor = backgroundPicker.value || "#FFFFFF"; 
+        gridContainer.style.backgroundColor = backgroundColor;
+    }); 
 
     eraser.addEventListener("click", function(){
         eraserMode = !eraserMode;
