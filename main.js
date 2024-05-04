@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", function(){
     const colorPicker = document.querySelector("#colorPicker");
     const backgroundPicker = document.querySelector("#backgroundPicker");
     const eraser = document.querySelector(".eraser"); 
+    const clear = document.querySelector(".clear");
     
 
     let currentColor = colorPicker.value || "#000000";
@@ -56,8 +57,13 @@ document.addEventListener("DOMContentLoaded", function(){
     eraser.addEventListener("click", function(){
         eraserMode = !eraserMode;
         eraser.classList.toggle("active");
-       
+    });
 
+    clear.addEventListener("click", function(){
+        const squares = document.querySelectorAll(".square"); 
+        for (let i = 0; i < squares.length; i++) {
+            squares[i].style.backgroundColor = ""; 
+        }
     });
 
     
