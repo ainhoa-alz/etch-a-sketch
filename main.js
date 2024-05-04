@@ -10,14 +10,14 @@ document.addEventListener("DOMContentLoaded", function(){
     
 
     let currentColor = colorPicker.value || "#000000";
-    let backgroundColor = backgroundPicker.value || "#FFFFFF"; 
+    let backgroundColor = backgroundPicker.value || "#F5F5F7"; 
     let eraserMode = false; 
     let randomMode = false; 
     
     function createGrid(size){
         gridContainer.innerHTML = "";
 
-        const squareSize = 600 / size - 2; 
+        const squareSize = 550 / size - 2; 
 
         for (let i = 0; i < size * size; i++){
             const square = document.createElement("div");
@@ -56,7 +56,7 @@ document.addEventListener("DOMContentLoaded", function(){
     });
 
     backgroundPicker.addEventListener("input", function(){
-        backgroundColor = backgroundPicker.value || "#FFFFFF"; 
+        backgroundColor = backgroundPicker.value || "#F5F5F7"; 
         gridContainer.style.backgroundColor = backgroundColor;
     }); 
 
