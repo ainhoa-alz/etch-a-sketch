@@ -23,7 +23,7 @@ body {
     flex-flow: column nowrap;
 }
 
-.controls, .color-picker, .slider {
+.controls, .color-picker, .slider, .background-picker {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -33,8 +33,15 @@ body {
     margin-right: 3em;
 }
 
-.color-picker{
+.color-picker, .background-picker{
     gap:5px;
+}
+.eraser, .clear, .background-picker{
+    margin-top:20px;    
+}
+
+.eraser.active{
+    background-color: red;
 }
 
 .grid-container {
@@ -49,11 +56,8 @@ body {
     height: 35px;
 }
 
-.square.hovered {
-    background-color: black;
-}
-
 .slider {
     margin-top: 20px;
     text-align: center;
 }
+

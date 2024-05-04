@@ -3,7 +3,9 @@ document.addEventListener("DOMContentLoaded", function(){
     const gridSizeSlider = document.querySelector("#gridSizeSlider");
     const gridSize = document.querySelector(".grid-size");
     const colorPicker = document.querySelector("#colorPicker");
+    const eraser = document.querySelector(".eraser"); 
     let currentColor = colorPicker.value || "#000000";
+    let eraserMode = false; 
     
     function createGrid(size){
         gridContainer.innerHTML = "";
@@ -18,9 +20,12 @@ document.addEventListener("DOMContentLoaded", function(){
             gridContainer.appendChild(square); 
 
             square.addEventListener("mouseover", function(){
-                if (!square.style.backgroundColor || square.style.backgroundColor === currentColor) { // Aplicar nuevo color solo si el cuadrado no tiene un color asignado o ya tiene el color actual
+                if (!eraserMode && (!square.style.backgroundColor || square.style.backgroundColor === currentColor)) { 
                     square.style.backgroundColor = currentColor;
+                }   else if (eraserMode && (!square.style.backgroundColor || square.style.backgroundColor !== currentColor)) {
+                    square.style.backgroundColor = ""; 
                 }
+
             });
         }
         gridSize.textContent = `${size}x${size}`;
@@ -31,11 +36,17 @@ document.addEventListener("DOMContentLoaded", function(){
         createGrid(this.value);
 
     });
-    colorPicker.addEventListener('change', function() { // Usar el evento 'change' en lugar de 'click' para detectar cambios de color
-        currentColor = colorPicker.value || "#000000"; // Actualizar el color actualmente seleccionado o establecer el color por defecto
+    colorPicker.addEventListener('change', function() { 
+        currentColor = colorPicker.value || "#000000"; 
     });
 
-    
+    eraser.addEventListener("click", function(){
+        eraserMode = !eraserMode;
+        eraser.classList.toggle("active");
+       
+
+    });
+
     
 
 });
